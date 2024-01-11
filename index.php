@@ -1,17 +1,14 @@
 <?php
 
     // Incluye los archivos de modelo, vista y controlador
-    include 'models/TareasModel.php';
-    include 'views/TareasViews.php';
-    include 'controllers/TareasControllers.php';
+    include 'models/LoginModel.php';
+    include 'views/LoginViews.php';
+    include 'controllers/LoginControllers.php';
     
     // Crea una instancia del controlador de tareas
     $tareasController = new TareasController();
-    $tareasController1 = new TareasController();
+
+    // Ejecuta la acción de listar tareas
+    $tareasController->mostrar();
     
-    // Ejecuta la acción de listar hoteles
-    $tareasController->listarHoteles();
-    
-    // Ejecuta la acción de listar habitaciones
-    $tareasController1->listarHabitaciones();
 ?>
