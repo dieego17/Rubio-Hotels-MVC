@@ -22,7 +22,7 @@ Los usuarios pueden realizar reservas de habitaciones a través de la aplicació
 - **MySQL**: Sistema de gestión de bases de datos relacional.
 **HTML y CSS con Bootstrap**: Para la estructura, presentación y estilos responsivos de las páginas web.
 
-  ## Participante del proyecto
+## Participante del proyecto
 - Diego Rubio
 
 
