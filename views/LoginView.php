@@ -5,14 +5,29 @@
     class LoginView{
         public function mostrarFormulario() {
 ?>
+            <div class="container">
+                <div class="container__form">
+                    <section class="section__form">
+                        <img class="img__form" src="./assets/images/hotel.jpeg" alt=""/>
+                    </section>
+                    <section class="section__form section__form--center">
+                        <form class="form" action="index.php?controller=Login&action=comprobarLogin" method="POST">
+                        <div class="container__input">
+                            <label class="form__label">Usuario</label>
+                            <input class="form__input" type="text" name="username">
+                        </div>
 
-            <form action="index.php?controller=Login&action=comprobarLogin" method="POST">
-                <label>Usuario</label>
-                <input type="text" name="username"> <br><br>
-                <label>Contraseña</label>
-                <input type="password" name="password"><br><br>
-                <button type="submit">Iniciar Sesión</button>
-            </form>
+                        <div class="container__input">
+                            <label class="form__label">Contraseña</label>
+                            <input class="form__input" type="password" name="password"><br><br>
+                        </div>
+                        <button class="form__button" type="submit">Iniciar Sesión</button>
+                    </form>
+                    </section>
+
+                </div>
+            </div>
+            
 
 <?php
             
