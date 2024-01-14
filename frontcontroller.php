@@ -2,6 +2,8 @@
     include 'controllers/LoginController.php';
     include 'models/LoginModel.php';
     include 'views/LoginView.php';
+    
+    include 'lib/Usuario.php';
 
 
     // Define la acción por defecto

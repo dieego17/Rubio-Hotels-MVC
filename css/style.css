@@ -20,7 +20,7 @@ body{
     width: 1080px;
 }
 .container__form{
-    background-color: #ffffff;
+    background-color: #5D616A;
     border-radius: 5px;
     margin: 95px 0px;
     display: flex;
@@ -63,7 +63,6 @@ body{
     margin: 10px 0px;
     font-family: LRe;
     text-align: center;
-    border-bottom: 1px solid #29ebfd;
     color: #29ebfd;
     font-size: 1rem;
 }
@@ -75,4 +74,7 @@ body{
     background-color: #40E8FE;
     color: #ffffff;
     border-radius: 5px;
+}
+.form__button:hover{
+    background-color: #40e8fec8;
 }

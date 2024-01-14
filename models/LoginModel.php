@@ -15,11 +15,28 @@
         
         
         public function comprobarLogin($username, $password) {
-            $stmt = $this->pdo->prepare('SELECT * FROM usuarios WHERE nombre=:nombre AND contraseña=:password');
-            $stmt->execute(array('nombre' => $username, 'password' => $password));
-            if ($stmt->rowCount() > 0) {
+            $consulta = $this->pdo->prepare('SELECT * FROM usuarios WHERE nombre=:nombre AND contraseña=:password');
+            $consulta->execute(array('nombre' => $username, 'password' => $password));
+            if ($consulta->rowCount() > 0) {
+                session_start();
+                foreach ($consulta as $user) {
+                    $usuario = new Usuario($user['id'], $user['nombre'], $user['contraseña'], $user['fecha_registro'], $user['rol']);
+                }
+                
+                $name = $usuario->getNombre();
+                $hashed__password = $usuario->getContraseña();
+                $rol = $usuario->getRol();
+                
+                $_SESSION['nombre'] = $usuario->getNombre();
+                $_SESSION['rol'] = $usuario->setRol($rol);
+                
+                //Crea la cookie para almacenar el nombre del usuario que expira en 20 dias
+                setcookie("guardarNombre", $name, time() + 20 * 24 * 60 * 60);
+
+                echo "bien hecho";
                 return true;
             } else {
+                echo "mal hecho";
                 return false;
             }
         }
