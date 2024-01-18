@@ -3,17 +3,28 @@
     include 'models/LoginModel.php';
     include 'views/LoginView.php';
     
-    include 'lib/Usuario.php';
+    include 'controllers/HotelController.php';
+    include 'models/HotelModel.php';
+    include 'views/HotelView.php';
+    
+    include 'models/Usuario.php';
+    include 'models/Hotel.php';
+    include 'models/Habitacion.php';
+    include 'models/Reserva.php';
 
 
     // Define la acción por defecto
     define('ACCION_DEFECTO', 'mostrarLogin');
+    
+    //define('ACTION_DEFECTO', 'mostrarHoteles');
 
     // Define el controlador por defecto
     define('CONTROLADOR_DEFECTO', 'Login');
+    
+    //define('CONTROLADOR_DEFECTO', 'Hotel');
 
     // Comprueba la acción a realizar, que llegará en la petición.
-    // Si no hay acción a realizar lanzará la acción por defecto, que es listar
+    // Si no hay acción a realizar lanzará la acción por defecto, que es mostrarLogin
     // Y se carga la acción, llama a la función cargarAccion
     function lanzarAccion($controllerObj){
 

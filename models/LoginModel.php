@@ -28,15 +28,16 @@
                 $rol = $usuario->getRol();
                 
                 $_SESSION['nombre'] = $usuario->getNombre();
-                $_SESSION['rol'] = $usuario->setRol($rol);
+                $_SESSION['rol'] = $usuario->getRol();
                 
                 //Crea la cookie para almacenar el nombre del usuario que expira en 20 dias
                 setcookie("guardarNombre", $name, time() + 20 * 24 * 60 * 60);
 
-                echo "bien hecho";
+                //echo "bien hecho";
+                //header("Location: index.php?controller=Hotel&action=mostrarHoteles");
                 return true;
             } else {
-                echo "mal hecho";
+                //header("Location: index.php?controller=Login&action=comprobarUser");
                 return false;
             }
         }

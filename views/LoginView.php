@@ -21,8 +21,19 @@
                             <label class="form__label">Contraseña</label>
                             <input class="form__input" type="password" name="password"><br><br>
                         </div>
+                        <div class="container__input">
+                            <?php
+                                if(isset($_GET['action'])){
+                                    if($_GET['action'] === 'comprobarUser'){
+                                        echo "<p class='register__error'>Error: usuario o contraseña incorrecta</p>";
+                                    }
+                                }
+
+                            ?>
+                        </div>    
                         <button class="form__button" type="submit">Iniciar Sesión</button>
                     </form>
+                       
                     </section>
                 </div>
             </div>

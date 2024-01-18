@@ -27,14 +27,24 @@
             $username = $_POST['username'];
             $pass = $_POST['password'];
             
-            $password = hash("sha256", $pass);
+            if($username != "" && $pass != ""){
+                $password = hash("sha256", $pass);
             
-            //comprueba el inicio de sesion con el usuario y contraseña proporcionado por parte del usuario
-            $this->model->comprobarLogin($username, $password);
-            
-            $ultima_visita = date("d/m/Y | H:i:s");
-            //Creamos la cookie par almacenar la fecha de la ultima visita del usuario que expira en 20 dias
-            setcookie("ultimaVez", $ultima_visita, time() + 20 * 24 * 60 * 60);
+                //comprueba el inicio de sesion con el usuario y contraseña proporcionado por parte del usuario
+                $usuarioNuevo = $this->model->comprobarLogin($username, $password);
+                if($usuarioNuevo){
+                    $ultima_visita = date("d/m/Y | H:i:s");
+                    //Creamos la cookie par almacenar la fecha de la ultima visita del usuario que expira en 20 dias
+                    setcookie("ultimaVez", $ultima_visita, time() + 20 * 24 * 60 * 60);
+                    
+                    //header("Location: index.php?controller=Hotel&action=mostrarHoteles");
+                    
+                }else{
+                    $this->view->mostrarFormulario();
+                }
+            }else{
+                $this->view->mostrarFormulario();
+            }
         }
     }
 

@@ -13,7 +13,7 @@
 body{
     background: linear-gradient(135deg, #74e1ff, #29ebfd);
     background-repeat: no-repeat;
-    min-height: 100%;
+    background-size: cover;
 }
 .container{
     margin: 0 auto;
@@ -77,4 +77,9 @@ body{
 }
 .form__button:hover{
     background-color: #40e8fec8;
+}
+.register__error{
+    padding-bottom: 40px;
+    color: red;
+    font-family: LRe;
 }
