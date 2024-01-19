@@ -89,16 +89,66 @@ body{
 /* MOSTRAR HOTELES */
 .container__hoteles{
     margin: 0 auto;
-    width: 1080px;
-    background: white;
+    min-width: 450px;
+    width: 100%;
+    max-width: 1300px;
+}
+.container__main{
+    background: #ffffff;
+    margin: 100px 0px;
+    border-radius: 5px;
+}
+.section__title{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.h2__titulo{
+    font-family: LBo;
+    text-align: center;
+    color: #29ebfd;
+    padding: 30px 30px 0px;
+}
+.link__sesion{
+    background-color: #29ebfd;
+    padding: 10px 20px;
+    margin: 0px 50px;
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: LRe;
+}
+.link__sesion:hover{
+    background-color: #24c1cf;
 }
 .section__hotel{
     display: flex;
     justify-content: space-between;
     align-content: center;
-    
 }
-.hotel__texto{
+.table__hoteles{
+    margin: 10px 0px;
     text-align: center;
-    padding: 0px 10px;
+    padding: 10px 5px;
+}
+.thead__hoteles{
+    margin: 0px 30px;
+}
+.th__hotel{
+    font-family: LBo;
+    padding: 0px 25px;
+    color: #000;
+}
+.td__hotel{
+    padding: 10px 0px;
+    font-family: LRe;
+    color: #5D616A;
+}
+.td__link{
+    padding: 0px 30px;
+    text-decoration: none;
+    color: #29ebfd;
+}
+.td__link:hover{
+    text-decoration: underline;
 }
