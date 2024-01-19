@@ -14,8 +14,10 @@ body{
     background: linear-gradient(135deg, #74e1ff, #29ebfd);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 .container{
+    background: linear-gradient(135deg, #74e1ff, #29ebfd);
     margin: 0 auto;
     width: 1080px;
 }
@@ -82,4 +84,21 @@ body{
     padding-bottom: 40px;
     color: red;
     font-family: LRe;
+}
+
+/* MOSTRAR HOTELES */
+.container__hoteles{
+    margin: 0 auto;
+    width: 1080px;
+    background: white;
+}
+.section__hotel{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    
+}
+.hotel__texto{
+    text-align: center;
+    padding: 0px 10px;
 }

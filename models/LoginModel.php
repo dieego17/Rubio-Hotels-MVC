@@ -33,8 +33,7 @@
                 //Crea la cookie para almacenar el nombre del usuario que expira en 20 dias
                 setcookie("guardarNombre", $name, time() + 20 * 24 * 60 * 60);
 
-                //echo "bien hecho";
-                //header("Location: index.php?controller=Hotel&action=mostrarHoteles");
+                header("Location: index.php?controller=Hotel&action=mostrarHoteles");
                 return true;
             } else {
                 //header("Location: index.php?controller=Login&action=comprobarUser");

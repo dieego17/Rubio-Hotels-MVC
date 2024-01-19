@@ -8,8 +8,9 @@
         private $pais;
         private $num_habitaciones;
         private $descripcion;
+        private $foto;
         
-        public function __construct($id, $nombre, $direccion, $ciudad, $pais, $num_habitaciones, $descripcion) {
+        public function __construct($id, $nombre, $direccion, $ciudad, $pais, $num_habitaciones, $descripcion, $foto) {
             $this->id = $id;
             $this->nombre = $nombre;
             $this->direccion = $direccion;
@@ -17,8 +18,8 @@
             $this->pais = $pais;
             $this->num_habitaciones = $num_habitaciones;
             $this->descripcion = $descripcion;
+            $this->foto = $foto;
         }
-        
         public function getId() {
             return $this->id;
         }
@@ -45,6 +46,10 @@
 
         public function getDescripcion() {
             return $this->descripcion;
+        }
+
+        public function getFoto() {
+            return $this->foto;
         }
 
         public function setId($id): void {
@@ -75,7 +80,9 @@
             $this->descripcion = $descripcion;
         }
 
-
+        public function setFoto($foto): void {
+            $this->foto = $foto;
+        }
 
     }
 

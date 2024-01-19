@@ -10,11 +10,10 @@
             $this->pdo = $this->bd->getPDO();
         }
         
-        public function mostrarHoteles() {
+        public function detallesHoteles() {
             $hoteles = $this->pdo->prepare('SELECT * FROM hoteles');
             $hoteles->execute();
             return $hoteles->fetchAll(PDO::FETCH_ASSOC);
         }
-        
     }
 
