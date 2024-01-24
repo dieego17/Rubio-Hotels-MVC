@@ -7,6 +7,10 @@
     include 'models/HotelModel.php';
     include 'views/HotelView.php';
     
+    include 'controllers/HabitacionController.php';
+    include 'models/HabitacionModel.php';
+    include 'views/HabitacionView.php';
+    
     include 'models/Usuario.php';
     include 'models/Hotel.php';
     include 'models/Habitacion.php';

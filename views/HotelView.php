@@ -32,17 +32,18 @@
                                                 echo '<td class="td__hotel">'.$hotel->getPais().'</td>';
                                                 echo '<td class="td__hotel">'.$hotel->getNum_habitaciones().'</td>';
                                                 echo '<td class="td__hotel">'.$hotel->getDescripcion().'</td>';
-                                                echo '<td class="td__hotel"><a class="td__link" href="url" target="target">Ver detalles</a></td>';
+                                                echo '<form action="index.php?controller=Habitacion&action=detallesHabitacion" method="POST">';
+                                                    echo '<td class="td__hotel"><input type="hidden" name="id" value="'.$hotel->getId().'"></td>';
+                                                    echo '<td class="td__hotel td__link"><button class="form__button form__button--input" type="submit">Ver detalles</button></td>';
+                                                echo '</form>';
                                             echo '</tr>';
                                         echo '</tbody>';
                                     }
-                                    
                                 ?>
                             </table>
                         </section>
                     </main>
                 </div>
-                
 <?php
         }
     }
