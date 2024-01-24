@@ -10,6 +10,10 @@
         }
         
         public function detallesHabitacion() {
+            session_start();
+            if(!$_SESSION['nombre']){
+                header('Location: ./index.php');
+            }
             
             $id_hotel = $_POST['id'];
             $habitaciones = $this->model->getHabitacion($id_hotel);

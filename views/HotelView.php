@@ -7,7 +7,7 @@
                     <main class="container__main">
                         <section class="section__title">
                             <h2 class="h2__titulo">NUESTROS HOTELES</h2>
-                            <a class="link__sesion" href="">CERRAR SESIÓN</a>
+                            <a class="link__sesion" href="index.php?controller=Login&action=cerrarSesion">CERRAR SESIÓN</a>
                         </section>
                         <section class="section__hotel">
                             <table class="table__hoteles">

@@ -22,6 +22,10 @@
         
         //funcion que sirve para comprobar los datos enviados
         public function comprobarUser() {
+            session_start();
+            if(!$_SESSION['nombre']){
+                header('Location: ./index.php');
+            }
             
             //recupero los datos del login
             $username = $_POST['username'];
@@ -45,6 +49,19 @@
             }else{
                 $this->view->mostrarFormulario();
             }
+        }
+        
+        //funcion para poder cerrar sesion
+        public function cerrarSesion() {
+            session_start();
+            
+            $_SESSION = array();
+            session_destroy();
+            setcookie('ultimaVez', '', time() - 1);
+            setcookie('guardarNombre', '', time() - 1);
+            
+            header('Location: ./index.php');
+            
         }
     }
 
