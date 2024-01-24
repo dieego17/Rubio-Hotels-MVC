@@ -95,7 +95,7 @@ body{
 }
 .container__main{
     background: #ffffff;
-    margin: 100px 0px;
+    margin: 29px 0px;
     border-radius: 5px;
 }
 .section__title{
@@ -146,7 +146,7 @@ body{
     color: #5D616A;
 }
 .td__link{
-    padding: 0px 30px;
+    padding: 0px 10px;
     text-decoration: none;
     color: #29ebfd;
 }
@@ -156,4 +156,9 @@ body{
 .form__button--input{
     font-size: 1rem;
     font-family: LRe;
+}
+.imagen__hotel{
+    width: 300px;
+    padding: 0px 0px 0px 10px;
+
 }

@@ -3,7 +3,7 @@
     //solo base de datos
     include 'db/DB.php';
 
-    class LoginModel{
+    class UsuarioModel{
         
         private $bd;
         private $pdo;

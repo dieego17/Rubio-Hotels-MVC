@@ -2,7 +2,7 @@
 
     //solo html
 
-    class LoginView{
+    class UsuarioView{
         public function mostrarFormulario() {
 ?>
     
@@ -12,7 +12,7 @@
                         <img class="img__form" src="./assets/images/hotel.jpeg" alt=""/>
                     </section>
                     <section class="section__form section__form--center">
-                        <form class="form" action="index.php?controller=Login&action=comprobarUser" method="POST">
+                        <form class="form" action="index.php?controller=Usuario&action=comprobarUser" method="POST">
                         <div class="container__input">
                             <label class="form__label">Usuario</label>
                             <input class="form__input" type="text" name="username">

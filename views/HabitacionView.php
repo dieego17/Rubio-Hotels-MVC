@@ -9,7 +9,7 @@
                         <section class="section__title">
                             <h2 class="h2__titulo">HABITACIONES DISPONIBLES</h2>
                             <div class="div__button">
-                                <a class="link__sesion" href="index.php?controller=Login&action=cerrarSesion">CERRAR SESIÓN</a>
+                                <a class="link__sesion" href="index.php?controller=Usuario&action=cerrarSesion">CERRAR SESIÓN</a>
                                 <a class="link__sesion" href="index.php?controller=Hotel&action=mostrarHoteles">VOLVER</a>
                             </div>
                         </section>

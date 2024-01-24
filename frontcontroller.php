@@ -1,7 +1,7 @@
 <?php
-    include 'controllers/LoginController.php';
-    include 'models/LoginModel.php';
-    include 'views/LoginView.php';
+    include 'controllers/UsuarioController.php';
+    include 'models/UsuarioModel.php';
+    include 'views/UsuarioView.php';
     
     include 'controllers/HotelController.php';
     include 'models/HotelModel.php';
@@ -23,7 +23,7 @@
     //define('ACTION_DEFECTO', 'mostrarHoteles');
 
     // Define el controlador por defecto
-    define('CONTROLADOR_DEFECTO', 'Login');
+    define('CONTROLADOR_DEFECTO', 'Usuario');
     
     //define('CONTROLADOR_DEFECTO', 'Hotel');
 

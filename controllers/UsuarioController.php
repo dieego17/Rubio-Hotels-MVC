@@ -4,14 +4,14 @@
     // Incluye el archivo TareasView.php
     //include_once 'views/TareasView.php';
 
-    class LoginController {
+    class UsuarioController {
         // Obtiene una instancia del modelo y de la vista de tareas
         private $model;
         private $view;
 
         public function __construct() {
-            $this->model = new LoginModel();
-            $this->view = new LoginView();
+            $this->model = new UsuarioModel();
+            $this->view = new UsuarioView();
         }
 
         //funcion para mostrar el login creado
