@@ -12,20 +12,18 @@
                         <section class="section__hotel">
                             <table class="table__hoteles">
                                 <?php
+                                    echo '<thead class="thead__hoteles">';
+                                        echo '<th class="th__hotel">FOTO</th>';
+                                        echo '<th class="th__hotel">NOMBRE</th>';
+                                        echo '<th class="th__hotel">DIRECCIÓN</th>';
+                                        echo '<th class="th__hotel">CIUDAD</th>';
+                                        echo '<th class="th__hotel">PAÍS</th>';
+                                        echo '<th class="th__hotel">NUM HABITACIONES</th>';
+                                        echo '<th class="th__hotel">DESCRIPCIÓN</th>';
+                                    echo '</thead>';
                                     foreach ($nuevosHoteles as $hotel) {
-                                        echo '<thead class="thead__hoteles">';
-                                            echo '<th class="th__hotel">FOTO</th>';
-                                            echo '<th class="th__hotel">NOMBRE</th>';
-                                            echo '<th class="th__hotel">DIRECCIÓN</th>';
-                                            echo '<th class="th__hotel">CIUDAD</th>';
-                                            echo '<th class="th__hotel">PAÍS</th>';
-                                            echo '<th class="th__hotel">NUM HABITACIONES</th>';
-                                            echo '<th class="th__hotel">DESCRIPCIÓN</th>';
-                                            echo '<th class="th__hotel"></th>';
-                                        echo '</thead>';
                                         echo '<tbody>';
                                             echo '<tr>';
-                                              
                                                 echo '<td class="td__hotel"><img class="imagen__hotel" src = "data:image/jpeg;base64,'. base64_encode($hotel->getFoto()) .'"></td>';
                                                 echo '<td class="td__hotel">'.$hotel->getNombre().'</td>';
                                                 echo '<td class="td__hotel">'.$hotel->getDireccion().'</td>';

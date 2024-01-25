@@ -70,7 +70,7 @@ body{
 }
 .form__button{
     border: none;
-    padding: 10px 25px;
+    padding: 10px 20px;
     font-size: 1rem;
     font-family: LBo;
     background-color: #40E8FE;
@@ -113,7 +113,7 @@ body{
 .link__sesion{
     background-color: #29ebfd;
     padding: 10px 20px;
-    margin: 0px 30px;
+    margin: 0px 10px;
     border-radius: 5px;
     color: #ffffff;
     text-decoration: none;
@@ -205,6 +205,15 @@ body{
 }
 
 /* BUTTON RESERVAS DETALLES */
+.div__button--reserva{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 20px;
+}
 .form__reserva--detalle{
-    margin: 0px 60px;
+    margin: 0px 10px;
+}
+.form__reserva--usuario{
+    margin: 0px 30px 0px 0px;
 }
