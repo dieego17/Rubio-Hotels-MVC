@@ -13,25 +13,53 @@
                                 <a class="link__sesion" href="index.php?controller=Hotel&action=mostrarHoteles">VOLVER</a>
                             </div>
                         </section>
-                        <section class="section__hotel">
-                            <table class="table__hoteles">
-                                <?php
+                        <section class="section__hotel section__habitacion">
+                            <table class="table__hoteles table__habitaciones">
+                                <?php 
+                                    $fechaActual = date("Y-m-d");
+
                                     foreach ($nuevasHabitaciones as $habitacion) {
                                         echo '<thead class="thead__hoteles">';
-                                            echo '<th class="th__hotel">NÚMERO DE HABITACIÓN</th>';
-                                            echo '<th class="th__hotel">TIPO</th>';
-                                            echo '<th class="th__hotel">PRECIO</th>';
-                                            echo '<th class="th__hotel">DESCRIPCIÓN</th>';
-                                            echo '<th class="th__hotel"></th>';
+                                            echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIÓN</th>';
+                                            echo '<th class="th__hotel th__habitacion">TIPO</th>';
+                                            echo '<th class="th__hotel th__habitacion">PRECIO</th>';
+                                            echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
+                                            //visible para el usuario
+                                            if($_SESSION['rol'] == 0){
+                                                echo '<th class="th__hotel th__habitacion">RESERVAR HABITACIÓN</th>';
+                                            }
                                         echo '</thead>';
                                         echo '<tbody>';
                                             echo '<tr>';
                                                 echo '<td class="td__hotel">'.$habitacion->getNum_habitaciones().'</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getTipo().'</td>';
-                                                echo '<td class="td__hotel">'.$habitacion->getPrecio().'</td>';
+                                                echo '<td class="td__hotel">'.$habitacion->getPrecio().'€</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getDescripcion().'</td>';
+                                                //visible para el usuario
+                                                if($_SESSION['rol'] == 0){
+                                                    echo '<td class="td__hotel">';
+                                                    echo '<form class="form__reserva" action="index.php?controller=Reservas&action=comprobarReservas" method="POST">';
+                                                        echo '<div class="div__input">';
+                                                            echo '<label class="label__form" for="">Fecha de Entrada:</label>';
+                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_entrada" id="">';
+                                                        echo '</div>';
+                                                        echo '<div class="div__input">';
+                                                            echo '<label class="label__form" for="">Fecha de Salida:</label>';
+                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_salida" id="">';
+                                                        echo '</div>';
+                                                    echo '</form>';
+                                                echo '</td>';
+
+                                                //visible para el admin
+                                                }else if($_SESSION['rol'] == 1){
+                                                    echo '<form action="index.php?controller=Reserva&action=detallesReservas" method="POST">';
+                                                        echo '<input type="hidden" name="id_hotel" value="'.$habitacion->getId_hotel().'">';
+                                                        echo '<td class="td__hotel td__link "><button class="form__button form__reserva--detalle form__button--input" type="submit">Ver detalles reservas</button></td>';
+                                                echo '</form>';
+                                                } 
                                             echo '</tr>';
                                         echo '</tbody>';
+                                        
                                     }
                                 ?>
                             </table>

@@ -11,6 +11,10 @@
     include 'models/HabitacionModel.php';
     include 'views/HabitacionView.php';
     
+    include 'controllers/ReservaController.php';
+    include 'models/ReservaModel.php';
+    include 'views/ReservaView.php';
+    
     include 'models/Usuario.php';
     include 'models/Hotel.php';
     include 'models/Habitacion.php';

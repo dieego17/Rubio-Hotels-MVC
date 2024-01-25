@@ -127,17 +127,29 @@ body{
     justify-content: space-between;
     align-content: center;
 }
+.section__habitacion{
+    padding: 20px 0px;
+}
 .table__hoteles{
-    margin: 10px 0px 20px;
+    margin: 10px 0px 0px;
     text-align: center;
     padding: 10px 5px;
+}
+.table__habitaciones{
+    margin: 10px 0px 20px;
 }
 .thead__hoteles{
     margin: 0px 30px;
 }
 .th__hotel{
     font-family: LBo;
-    padding: 0px 25px;
+    padding: 10px 25px 0px;
+    color: #000;
+    font-size: 1rem;
+}
+.th__habitacion{
+    font-family: LBo;
+    padding: 40px 25px 0px;
     color: #000;
 }
 .td__hotel{
@@ -161,4 +173,38 @@ body{
     width: 300px;
     padding: 0px 0px 0px 10px;
 
+}
+
+/* FORMULARIO RESERVA */
+.form__reserva{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 0px 0px 30px;
+}
+.div__input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+}
+.label__form{
+    padding: 0px 0px 10px;
+}
+.input__date{
+    color: #5D616A;
+    border: 1px solid #29ebfd;
+    font-family: LRe;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.input__date:focus{
+    outline: none;
+}
+
+/* BUTTON RESERVAS DETALLES */
+.form__reserva--detalle{
+    margin: 0px 60px;
 }
