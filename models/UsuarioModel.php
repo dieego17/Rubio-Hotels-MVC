@@ -28,6 +28,7 @@
                 $rol = $usuario->getRol();
                 
                 $_SESSION['nombre'] = $usuario->getNombre();
+                $_SESSION['id'] = $usuario->getId();
                 $_SESSION['rol'] = $usuario->getRol();
                 
                 //Crea la cookie para almacenar el nombre del usuario que expira en 20 dias

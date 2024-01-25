@@ -16,6 +16,11 @@
                                             echo '<input type="hidden" name="id_hotel" value="'.$nuevasHabitaciones[0]->getId_hotel(). '">';
                                             echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VER RESERVAS</button>';
                                         echo '</form>';
+                                    }else if($_SESSION['rol'] == 0){
+                                        echo '<form action="index.php?controller=Reserva&action=usuarioReservas" method="POST">';
+                                            echo '<input type="hidden" name="id_hotel" value="'.$nuevasHabitaciones[0]->getId_hotel().'">';
+                                            echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VER MIS RESERVAS</button>';
+                                        echo '</form>';
                                     }
                                     
                                 ?>
@@ -61,11 +66,7 @@
                                                     echo '</form>';
                                                     echo '</td>';
                                                     echo '<td class="td__hotel">';
-                                                        echo '<form action="index.php?controller=Reserva&action=detallesReservas" method="POST">';
-                                                                echo '<input type="hidden" name="id_hotel" value="'.$habitacion->getId_hotel().'">';
-                                                                echo '<td class="td__hotel td__link "><button class="form__button form__reserva--usuario form__button--input" type="submit">Ver mis reservas</button></td>';
-                                                        echo '</form>';
-                                                    echo '</td>';
+                                                        
                                                 } 
                                             echo '</tr>';
                                         echo '</tbody>';

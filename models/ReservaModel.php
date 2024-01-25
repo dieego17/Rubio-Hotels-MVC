@@ -17,5 +17,13 @@
             return $todasReservas = $reservas->fetchAll();
         }
         
+        public function reservaUser() {
+            $sql = "SELECT * FROM reservas WHERE id_usuario = ?;";
+            $reservas = $this->pdo->prepare($sql);
+            $reservas->execute(array($_SESSION['id']));
+            return $todasReservas = $reservas->fetchAll();
+
+        }
+        
     }
 
