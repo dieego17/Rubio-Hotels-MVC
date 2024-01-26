@@ -26,7 +26,9 @@
         }
         
         public function comprobarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida) {
-            $sql = "SELECT * FROM reservas WHERE id_habitacion = :id_habitacion AND id_hotel = :id_hotel AND (:fecha_entrada BETWEEN fecha_entrada AND fecha_salida OR :fecha_salida BETWEEN fecha_entrada AND fecha_salida);";
+            $sql = "SELECT * FROM reservas WHERE id_habitacion = :id_habitacion AND id_hotel = :id_hotel AND "
+                    . "(:fecha_entrada BETWEEN fecha_entrada AND fecha_salida OR :fecha_salida BETWEEN fecha_entrada AND fecha_salida"
+                    . "AND :fecha_salida < :fecha_entrada);";
             $reservas = $this->pdo->prepare($sql);
             $reservas->execute(array('id_hotel' => $id_hotel, 'id_habitacion' => $id_habitacion, 'fecha_entrada' => $fecha_entrada, 'fecha_salida' => $fecha_salida));
             return $reservas->rowCount() === 0;
