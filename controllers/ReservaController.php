@@ -47,10 +47,32 @@
             }
             
             $this->view->userReservas($usuarioReservas);
+        }
+        
+        public function comprobarReserva() {
+            session_start();
+            if(!$_SESSION['nombre']){
+                header('Location: ./index.php');
+            }
+            
+            $id_habitacion = $_POST['id_habitacion'];
+            $id_hotel = $_POST['id_hotel'];
+            $fecha_entrada = $_POST['fecha_entrada'];
+            $fecha_salida = $_POST['fecha_salida'];
+            
+            $comprobarReserva = $this->model->comprobarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
+            
+            if($comprobarReserva){
+                echo "se puede hacer una reserva";
+                $insertarReserva = $this->model->insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
+                
+                header('Location : index.php?controller=Habitacion&action=detallesHabitacion');
+            }else{
+                echo "no se puede reservar, ya existe una reserva";
+            }
             
             
         }
-        
         
         
     }

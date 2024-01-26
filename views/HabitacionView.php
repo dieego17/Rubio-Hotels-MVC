@@ -27,8 +27,8 @@
                                 <a class="link__sesion" href="index.php?controller=Hotel&action=mostrarHoteles">VOLVER</a>
                             </div>
                         </section>
-                        <section class="section__hotel section__habitacion">
-                            <table class="table__hoteles table__habitaciones">
+                        <section class="section__hotel section__habitacion row">
+                            <table class="table__hoteles table__habitaciones col-12">
                                 <?php 
                                     $fechaActual = date("Y-m-d");
                                     
@@ -54,23 +54,25 @@
                                                 //visible para el usuario
                                                 if($_SESSION['rol'] == 0){
                                                     echo '<td class="td__hotel">';
-                                                    echo '<form class="form__reserva" action="index.php?controller=Reservas&action=comprobarReservas" method="POST">';
-                                                        echo '<div class="div__input">';
-                                                            echo '<label class="label__form" for="">Fecha de Entrada:</label>';
-                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_entrada" id="">';
-                                                        echo '</div>';
-                                                        echo '<div class="div__input">';
-                                                            echo '<label class="label__form" for="">Fecha de Salida:</label>';
-                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_salida" id="">';
-                                                        echo '</div>';
-                                                    echo '</form>';
+                                                        echo '<form class="form__reserva" action="index.php?controller=Reserva&action=comprobarReserva" method="POST">';
+                                                            echo '<div class="div__input">';
+                                                                echo '<label class="label__form" for="">Fecha de Entrada:</label>';
+                                                                echo '<input type="hidden" name="id_hotel" value="'.$habitacion->getId_hotel().'">';
+                                                                echo '<input type="hidden" name="id_habitacion" value="'.$habitacion->getId().'">';
+                                                                echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_entrada" id="" required>';
+                                                            echo '</div>';
+                                                            echo '<div class="div__input">';
+                                                                echo '<label class="label__form" for="">Fecha de Salida:</label>';
+                                                                echo '<input type="hidden" name="id_hotel" value="'.$habitacion->getId_hotel().'">';
+                                                                echo '<input type="hidden" name="id_habitacion" value="'.$habitacion->getId().'">';
+                                                                echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_salida" id="" required>';
+                                                            echo '</div>';
+                                                            echo '<button class="form__button form__reserva--detalle form__button--input button__reserva" type="submit">RESERVAR</button>';
+                                                        echo '</form>';
                                                     echo '</td>';
-                                                    echo '<td class="td__hotel">';
-                                                        
                                                 } 
                                             echo '</tr>';
                                         echo '</tbody>';
-                                        
                                     }
                                 ?>
                             </table>

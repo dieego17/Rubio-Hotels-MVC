@@ -9,8 +9,8 @@
                             <h2 class="h2__titulo">NUESTROS HOTELES</h2>
                             <a class="link__sesion" href="index.php?controller=Usuario&action=cerrarSesion">CERRAR SESIÓN</a>
                         </section>
-                        <section class="section__hotel">
-                            <table class="table__hoteles">
+                        <section class="section__hotel row">
+                            <table class="table__hoteles col-12">
                                 <?php
                                     echo '<thead class="thead__hoteles">';
                                         echo '<th class="th__hotel">FOTO</th>';
@@ -33,7 +33,7 @@
                                                 echo '<td class="td__hotel">'.$hotel->getDescripcion().'</td>';
                                                 echo '<form action="index.php?controller=Habitacion&action=detallesHabitacion" method="POST">';
                                                     echo '<td class="td__hotel"><input type="hidden" name="id" value="'.$hotel->getId().'"></td>';
-                                                    echo '<td class="td__hotel td__link"><button class="form__button form__button--input" type="submit">Ver detalles</button></td>';
+                                                    echo '<td class="td__hotel td__link"><button class="form__button--input" type="submit">Ver detalles</button></td>';
                                                 echo '</form>';
                                             echo '</tr>';
                                         echo '</tbody>';

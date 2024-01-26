@@ -19,8 +19,8 @@ class ReservaView{
                             </form>
                         </div>
                     </section>
-                    <section class="section__hotel section__habitacion">
-                        <table class="table__hoteles table__habitaciones">
+                    <section class="section__hotel section__habitacion row">
+                        <table class="table__hoteles table__habitaciones col-12">
                             <?php 
                                 echo '<thead class="thead__hoteles">';
                                 echo '<th class="th__hotel th__habitacion">ID DE RESERVA</th>';
@@ -69,8 +69,8 @@ class ReservaView{
                             </form>
                         </div>
                     </section>
-                    <section class="section__hotel section__habitacion">
-                        <table class="table__hoteles table__habitaciones">
+                    <section class="section__hotel section__habitacion row">
+                        <table class="table__hoteles table__habitaciones col-12">
                             <?php
                                 echo '<thead class="thead__hoteles">';
                                     echo '<th class="th__hotel th__habitacion">HOTEL</th>';

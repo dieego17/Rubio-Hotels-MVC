@@ -4,14 +4,14 @@
     // Incluye el archivo TareasView.php
     //include_once 'views/TareasView.php';
 
-    class UsuarioController {
+    class LoginController {
         // Obtiene una instancia del modelo y de la vista de tareas
         private $model;
         private $view;
 
         public function __construct() {
-            $this->model = new UsuarioModel();
-            $this->view = new UsuarioView();
+            $this->model = new LoginModel();
+            $this->view = new LoginView();
         }
 
         //funcion para mostrar el login creado
@@ -22,10 +22,6 @@
         
         //funcion que sirve para comprobar los datos enviados
         public function comprobarUser() {
-            session_start();
-            if(!$_SESSION['nombre']){
-                header('Location: ./index.php');
-            }
             
             //recupero los datos del login
             $username = $_POST['username'];
@@ -44,25 +40,11 @@
                     //header("Location: index.php?controller=Hotel&action=mostrarHoteles");
                     
                 }else{
-                    header("Location: ./index.php?error");
-        
+                    $this->view->mostrarFormulario();
                 }
             }else{
-                header("Location: ./index.php?error");
+                $this->view->mostrarFormulario();
             }
-        }
-        
-        //funcion para poder cerrar sesion
-        public function cerrarSesion() {
-            session_start();
-            
-            $_SESSION = array();
-            session_destroy();
-            setcookie('ultimaVez', '', time() - 1);
-            setcookie('guardarNombre', '', time() - 1);
-            
-            header('Location: ./index.php');
-            
         }
     }
 
