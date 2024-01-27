@@ -74,6 +74,20 @@
             
         }
         
+        public function reservaEspecifica(){
+            session_start();
+            if(!$_SESSION['nombre']){
+                header('Location: ./index.php');
+            }
+            
+            $id_reserva = $_POST['id_reserva'];
+            
+            $detallesReservas = $this->model->detallesReservas($id_reserva);
+
+            $this->view->mostrarDetallesReser($detallesReservas);
+            
+        }
+        
         
     }
     

@@ -27,8 +27,7 @@
         
         public function comprobarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida) {
             $sql = "SELECT * FROM reservas WHERE id_habitacion = :id_habitacion AND id_hotel = :id_hotel AND "
-                    . "(:fecha_entrada BETWEEN fecha_entrada AND fecha_salida OR :fecha_salida BETWEEN fecha_entrada AND fecha_salida"
-                    . "AND :fecha_salida < :fecha_entrada);";
+                    . "(:fecha_entrada BETWEEN fecha_entrada AND fecha_salida OR :fecha_salida BETWEEN fecha_entrada AND fecha_salida);";
             $reservas = $this->pdo->prepare($sql);
             $reservas->execute(array('id_hotel' => $id_hotel, 'id_habitacion' => $id_habitacion, 'fecha_entrada' => $fecha_entrada, 'fecha_salida' => $fecha_salida));
             return $reservas->rowCount() === 0;
@@ -50,6 +49,24 @@
             $insertReserva->execute(array('id' => $nuevoID, 'id_usuario' => $_SESSION['id'], 'id_hotel' => $id_hotel, 'id_habitacion' => $id_habitacion, 'fecha_entrada' => $fecha_entrada, 'fecha_salida' => $fecha_salida));
             return $reservaRealizada = $insertReserva->fetchAll();
         }
+        
+        
+        public function detallesReservas($id_reserva) {
+            $sql = 'SELECT * FROM reservas r JOIN habitaciones ha ON r.id_habitacion = ha.id JOIN hoteles h ON ha.id_hotel = h.id WHERE r.id = :id_reserva';
+            $reservas = $this->pdo->prepare($sql);
+            $reservas->execute(array('id_reserva' => $id_reserva));
+
+            while ($row = $reservas->fetch(PDO::FETCH_ASSOC)) {
+                
+                $reserva = new Reserva($row['id'], $row['id_usuario'], $row['id_hotel'], $row['id_habitacion'], $row['fecha_entrada'], $row['fecha_salida']);
+                $hotel = new Hotel($row['id_hotel'], $row['nombre'], $row['direccion'], $row['ciudad'], $row['pais'], $row['num_habitaciones'], $row['descripcion'], $row['foto']);
+                $habitacion = new Habitacion($row['id_habitacion'], $row['id_hotel'], $row['num_habitaciones'], $row['tipo'], $row['precio'], $row['descripcion']);
+
+            }
+
+            return array("reserva" => $reserva, "hotel" => $hotel, "habitacion" => $habitacion);
+        }
+
         
     }
 

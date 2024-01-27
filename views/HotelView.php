@@ -33,7 +33,7 @@
                                                 echo '<td class="td__hotel">'.$hotel->getDescripcion().'</td>';
                                                 echo '<form action="index.php?controller=Habitacion&action=detallesHabitacion" method="POST">';
                                                     echo '<td class="td__hotel"><input type="hidden" name="id" value="'.$hotel->getId().'"></td>';
-                                                    echo '<td class="td__hotel td__link"><button class="form__button--input" type="submit">Ver detalles</button></td>';
+                                                    echo '<td class="td__hotel td__link"><button class="form__button--input" type="submit">VER DETALLES</button></td>';
                                                 echo '</form>';
                                             echo '</tr>';
                                         echo '</tbody>';

@@ -229,3 +229,14 @@ body{
 .button__reserva{
     margin: 40px 10px;
 }
+.nombre__foto--hotel{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.title__hotel{
+    font-family: LBo;
+    color: #5D616A;
+    padding: 0px 0px 10px;
+}
