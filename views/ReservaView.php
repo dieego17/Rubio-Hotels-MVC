@@ -134,7 +134,7 @@ class ReservaView{
                                             echo '<th class="th__hotel th__habitacion">DIRECCIÓN</th>';
                                             echo '<th class="th__hotel th__habitacion">CIUDAD</th>';
                                             echo '<th class="th__hotel th__habitacion">PAÍS</th>';
-                                            echo '<th class="th__hotel th__habitacion">NUM_HABITACIONES</th>';
+                                            echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIONES</th>';
                                             echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
 
                                         echo '</thead>';
@@ -162,11 +162,10 @@ class ReservaView{
                                         echo '</thead>';
                                         echo '<tbody>';
                                             echo '<tr>';
-                                                echo '<td class="td__hotel">'.$habitacion->getNum_habitaciones().'</td>';
+                                                echo '<td class="td__hotel">'.$habitacion->getNum_habitacion().'</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getTipo().'</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getPrecio().'€</td>';
                                                 echo '<td class=td__hotel>'.$habitacion->getDescripcion().'</td>';
-
                                             echo '</tr>';
                                         echo '</tbody>';
                             echo '</table>';

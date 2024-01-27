@@ -47,7 +47,7 @@
                                     foreach ($nuevasHabitaciones as $habitacion) {
                                         echo '<tbody>';
                                             echo '<tr>';
-                                                echo '<td class="td__hotel">'.$habitacion->getNum_habitaciones().'</td>';
+                                                echo '<td class="td__hotel">'.$habitacion->getNum_habitacion().'</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getTipo().'</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getPrecio().'€</td>';
                                                 echo '<td class="td__hotel">'.$habitacion->getDescripcion().'</td>';

@@ -3,15 +3,15 @@
     class Habitacion{
         private $id;
         private $id_hotel;
-        private $num_habitaciones;
+        private $num_habitacion;
         private $tipo;
         private $precio;
         private $descripcion;
         
-        public function __construct($id, $id_hotel, $num_habitaciones, $tipo, $precio, $descripcion) {
+        public function __construct($id, $id_hotel, $num_habitacion, $tipo, $precio, $descripcion) {
             $this->id = $id;
             $this->id_hotel = $id_hotel;
-            $this->num_habitaciones = $num_habitaciones;
+            $this->num_habitacion = $num_habitacion;
             $this->tipo = $tipo;
             $this->precio = $precio;
             $this->descripcion = $descripcion;
@@ -25,8 +25,8 @@
             return $this->id_hotel;
         }
 
-        public function getNum_habitaciones() {
-            return $this->num_habitaciones;
+        public function getNum_habitacion() {
+            return $this->num_habitacion;
         }
 
         public function getTipo() {
@@ -49,8 +49,8 @@
             $this->id_hotel = $id_hotel;
         }
 
-        public function setNum_habitaciones($num_habitaciones): void {
-            $this->num_habitaciones = $num_habitaciones;
+        public function setNum_habitacion($num_habitacion): void {
+            $this->num_habitacion = $num_habitacion;
         }
 
         public function setTipo($tipo): void {
