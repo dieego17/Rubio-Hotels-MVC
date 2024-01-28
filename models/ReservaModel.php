@@ -42,14 +42,21 @@
         public function comprobarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida)
         {
             try {
-                $sql = 'SELECT COUNT(*)FROM reservas WHERE id_hotel = :id_hotel AND id_habitacion = :id_habitacion AND fecha_entrada < :fecha_salida AND fecha_salida > :fecha_entrada;';
+                $sql = 'SELECT * FROM reservas WHERE id_habitacion = :id_habitacion AND id_hotel = :id_hotel AND '
+                        . '(:fecha_entrada BETWEEN fecha_entrada AND fecha_salida OR :fecha_salida BETWEEN fecha_entrada AND fecha_salida);';
                 $reservas = $this->pdo->prepare($sql);
-                $reservas->execute(array('id_hotel' => $id_hotel, 'id_habitacion' => $id_habitacion, 'fecha_entrada' => $fecha_entrada, 'fecha_salida' => $fecha_salida));
-                return $reservas->rowCount() === 0;
+                $reservas->execute(array('id_hotel' => $id_hotel, 'id_usuario' => $_SESSION['id'] , 'id_habitacion' => $id_habitacion, 'fecha_entrada' => $fecha_entrada, 'fecha_salida' => $fecha_salida));
+
+                // Obtener el resultado del conteo directamente
+                $count = $reservas->fetchColumn();
+
+                // Verificar si el resultado del conteo es igual a 0
+                return $count === 0;
             } catch (Exception $e) {
                 echo "Error checking reservation: " . $e->getMessage();
             }
         }
+
 
         public function insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida)
         {
@@ -93,4 +100,3 @@
         }
     }
 ?>
-

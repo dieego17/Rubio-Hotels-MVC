@@ -65,7 +65,7 @@
             if($comprobarReserva){
                 echo "se puede hacer una reserva";
                 $insertarReserva = $this->model->insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
-                
+
                 header('Location : index.php?controller=Habitacion&action=detallesHabitacion');
             }else{
                 echo "no se puede reservar, ya existe una reserva";
