@@ -10,6 +10,18 @@
         private $descripcion;
         private $foto;
         
+        /**
+         * Método constructor
+         * 
+         * @param type $id
+         * @param type $nombre
+         * @param type $direccion
+         * @param type $ciudad
+         * @param type $pais
+         * @param type $num_habitaciones
+         * @param type $descripcion
+         * @param type $foto
+         */
         public function __construct($id, $nombre, $direccion, $ciudad, $pais, $num_habitaciones, $descripcion, $foto) {
             $this->id = $id;
             $this->nombre = $nombre;
@@ -20,6 +32,8 @@
             $this->descripcion = $descripcion;
             $this->foto = $foto;
         }
+        
+        //GETTERS Y SETTERS
         public function getId() {
             return $this->id;
         }

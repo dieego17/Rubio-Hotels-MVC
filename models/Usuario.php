@@ -6,8 +6,15 @@
         private $contraseña;
         private $fecha_registro;
         private $rol;
-        
-        
+
+        /**
+         * Método constructor
+         * @param type $id
+         * @param type $nombre
+         * @param type $contraseña
+         * @param type $fecha_registro
+         * @param type $rol
+         */
         public function __construct($id, $nombre, $contraseña, $fecha_registro, $rol) {
             $this->id = $id;
             $this->nombre = $nombre;
@@ -16,6 +23,7 @@
             $this->rol = $rol;
         }
         
+        //GETTERS Y SETTERS
         public function getId() {
             return $this->id;
         }

@@ -8,6 +8,16 @@
         private $precio;
         private $descripcion;
         
+        /**
+         * Método constructor
+         * 
+         * @param type $id
+         * @param type $id_hotel
+         * @param type $num_habitacion
+         * @param type $tipo
+         * @param type $precio
+         * @param type $descripcion
+         */
         public function __construct($id, $id_hotel, $num_habitacion, $tipo, $precio, $descripcion) {
             $this->id = $id;
             $this->id_hotel = $id_hotel;
@@ -16,6 +26,8 @@
             $this->precio = $precio;
             $this->descripcion = $descripcion;
         }
+        
+        //GETTERS Y SETTERS
         
         public function getId() {
             return $this->id;

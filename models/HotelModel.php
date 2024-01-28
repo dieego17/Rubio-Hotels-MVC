@@ -1,22 +1,36 @@
 <?php
 
-class HotelModel {
-    private $bd;
-    private $pdo;
+    /**
+     * Clase HotelModel que maneja la interacción con la base de datos para la información de hoteles.
+     */
+    class HotelModel {
+        private $bd;
+        private $pdo;
 
-    public function __construct() {
-        $this->bd = new DB();
-        $this->pdo = $this->bd->getPDO();
-    }
+        /**
+         * Constructor de la clase HotelModel.
+         * Inicializa la conexión con la base de datos.
+         */
+        public function __construct() {
+            $this->bd = new DB();
+            $this->pdo = $this->bd->getPDO();
+        }
 
-    public function detallesHoteles() {
-        try {
-            $hoteles = $this->pdo->prepare('SELECT * FROM hoteles');
-            $hoteles->execute();
-            return $hoteles->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            // Handle the exception, log it, or rethrow if necessary
-            echo "Error para consguir los detalles de los hoteles: " . $e->getMessage();
+        /**
+         * Obtiene los detalles de todos los hoteles.
+         * 
+         * @return array|false - Devuelve un array asociativo con los detalles de los hoteles o false en caso de error.
+         */
+        public function detallesHoteles() {
+            try {
+                $hoteles = $this->pdo->prepare('SELECT * FROM hoteles');
+                $hoteles->execute();
+                return $hoteles->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                // Manejar la excepción, registrarla o relanzarla si es necesario
+                echo "Error al obtener los detalles de los hoteles: " . $e->getMessage();
+                return false;
+            }
         }
     }
-}
+

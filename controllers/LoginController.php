@@ -1,61 +1,63 @@
 <?php
-    //solo php se comunica entre modelo y view
 
-    // Incluye el archivo TareasView.php
-    //include_once 'views/TareasView.php';
+    // Incluye el modelo y la vista correspondientes al inicio de sesión
+    include_once 'models/LoginModel.php';
+    include_once 'views/LoginView.php';
 
     class LoginController {
-        // Obtiene una instancia del modelo y de la vista de tareas
         private $model;
         private $view;
 
+        /**
+         * Constructor de la clase LoginController.
+         * Inicializa las instancias del modelo (LoginModel) y la vista (LoginView).
+         */
         public function __construct() {
             $this->model = new LoginModel();
             $this->view = new LoginView();
         }
 
-        //funcion para mostrar el login creado
+        /**
+         * Función para mostrar el formulario de inicio de sesión.
+         * Muestra la vista del formulario.
+         */
         public function mostrarLogin() {
-            // Muestra la vista del formulario
             $this->view->mostrarFormulario();
         }
-        
-        //funcion que sirve para comprobar los datos enviados
+
+        /**
+         * Función para comprobar los datos enviados en el formulario de inicio de sesión.
+         * Recupera los datos del formulario y verifica el inicio de sesión con el usuario y contraseña proporcionados.
+         * Si la autenticación es exitosa, se establece una cookie para almacenar la fecha de la última visita.
+         * En caso de error, se vuelve a mostrar el formulario.
+         */
         public function comprobarUser() {
-            
-            //recupero los datos del login
+            // Recupera los datos del formulario
             $username = $_POST['username'];
             $pass = $_POST['password'];
-            
-            if($username != "" && $pass != ""){
+
+            if ($username != "" && $pass != "") {
+                // Hash de la contraseña
                 $password = hash("sha256", $pass);
-            
-                //comprueba el inicio de sesion con el usuario y contraseña proporcionado por parte del usuario
+
+                // Comprueba el inicio de sesión con el usuario y contraseña proporcionados
                 $usuarioNuevo = $this->model->comprobarLogin($username, $password);
-                if($usuarioNuevo){
+
+                if ($usuarioNuevo) {
+                    // Si la autenticación es exitosa, se establece una cookie para almacenar la fecha de la última visita
                     $ultima_visita = date("d/m/Y | H:i:s");
-                    //Creamos la cookie par almacenar la fecha de la ultima visita del usuario que expira en 20 dias
                     setcookie("ultimaVez", $ultima_visita, time() + 20 * 24 * 60 * 60);
-                    
-                    //header("Location: index.php?controller=Hotel&action=mostrarHoteles");
-                    
-                }else{
+                    // Redirige a la página principal o realiza alguna acción adicional
+                    // header("Location: index.php?controller=Hotel&action=mostrarHoteles");
+                } else {
+                    // En caso de error, vuelve a mostrar el formulario
                     $this->view->mostrarFormulario();
                 }
-            }else{
+            } else {
+                // Si faltan datos en el formulario, vuelve a mostrar el formulario
                 $this->view->mostrarFormulario();
             }
         }
     }
-
-
-
-    
-
-
-
-
-
-
-
+?>
 

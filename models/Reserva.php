@@ -8,6 +8,16 @@
         private $fecha_entrada;
         private $fecha_salida;
         
+        /**
+         * Método constructor
+         * 
+         * @param type $id
+         * @param type $id_usuario
+         * @param type $id_hotel
+         * @param type $id_habitacion
+         * @param type $fecha_entrada
+         * @param type $fecha_salida
+         */
         public function __construct($id, $id_usuario, $id_hotel, $id_habitacion, $fecha_entrada, $fecha_salida) {
             $this->id = $id;
             $this->id_usuario = $id_usuario;
@@ -17,6 +27,7 @@
             $this->fecha_salida = $fecha_salida;
         }
         
+        //GETTERS Y SETTERS
         public function getId() {
             return $this->id;
         }
