@@ -18,9 +18,9 @@
         public function getReservas($id_hotel)
         {
             try {
-                $sql = "SELECT * FROM reservas WHERE id_hotel = ?;";
+                $sql = "SELECT * FROM reservas WHERE id_hotel = :id_hotel;";
                 $reservas = $this->pdo->prepare($sql);
-                $reservas->execute(array($id_hotel));
+                $reservas->execute(array('id_hotel' => $id_hotel));
                 return $todasReservas = $reservas->fetchAll();
             } catch (Exception $e) {
                 echo "Error para conseguir las reservas: " . $e->getMessage();
@@ -30,9 +30,9 @@
         public function reservaUser()
         {
             try {
-                $sql = "SELECT * FROM reservas WHERE id_usuario = ?;";
+                $sql = "SELECT * FROM reservas WHERE id_usuario = :id_usuario;";
                 $reservas = $this->pdo->prepare($sql);
-                $reservas->execute(array($_SESSION['id']));
+                $reservas->execute(array('id_usuario' => $_SESSION['id']));
                 return $todasReservas = $reservas->fetchAll();
             } catch (Exception $e) {
                 echo "Error para conseguir la reserva de un usuario: " . $e->getMessage();
@@ -86,7 +86,7 @@
         public function detallesReservas($id_reserva)
         {
             try {
-                $sql = 'SELECT * FROM reservas r JOIN hoteles h ON r.id_habitacion = h.id JOIN habitaciones ha ON r.id_habitacion = ha.id WHERE r.id = :id_reserva';
+                $sql = 'SELECT * FROM reservas r JOIN hoteles h ON r.id_hotel = h.id JOIN habitaciones ha ON r.id_habitacion = ha.id WHERE r.id = :id_reserva';
                 $reservas = $this->pdo->prepare($sql);
                 $reservas->execute(array('id_reserva' => $id_reserva));
 
