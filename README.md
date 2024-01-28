@@ -20,7 +20,7 @@ Los usuarios pueden realizar reservas de habitaciones a través de la aplicació
 
 - **PHP**: Lenguaje de programación del lado del servidor.
 - **MySQL**: Sistema de gestión de bases de datos relacional.
-**HTML y CSS con Bootstrap**: Para la estructura, presentación y estilos responsivos de las páginas web.
+- **HTML y CSS con Bootstrap**: Para la estructura, presentación y estilos responsivos de las páginas web.
 
 ## Participante del proyecto
 - Diego Rubio
