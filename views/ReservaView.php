@@ -69,6 +69,26 @@ class ReservaView{
                             </form>
                         </div>
                     </section>
+                    <?php
+                        if(isset($_GET['error'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                                echo 'Reserva no disponible. Seleccione otra fecha.';
+                                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+                        if(isset($_GET['error']) == 2){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                                echo 'La fecha de salida no puede ser más pequeña que la de entrada.';
+                                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+                        if(isset($_GET['success'])){
+                            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                                echo 'Reserva realizada con éxito.';
+                                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+                    ?>
                     <section class="section__hotel section__habitacion row">
                         <table class="table__hoteles table__habitaciones col-12">
                             <?php

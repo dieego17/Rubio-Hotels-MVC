@@ -1,11 +1,8 @@
 <?php
 
-    //solo html
-
     class UsuarioView{
         public function mostrarFormulario() {
-?>
-    
+?>   
             <div class="container">
                 <div class="container__form row">
                     <section class="section__form col-md-6">
@@ -26,7 +23,6 @@
                                 if(isset($_GET['error'])){
                                     echo "<p class='register__error'>Error: usuario o contraseña incorrecta</p>";
                                 }
-
                             ?>
                         </div>    
                         <button class="form__button login__button" type="submit">Iniciar Sesión</button>
@@ -34,11 +30,8 @@
                        
                     </section>
                 </div>
-            </div>
-            
-
-<?php
-            
+            </div>           
+<?php         
         }
     }
 ?>

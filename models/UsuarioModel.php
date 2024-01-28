@@ -1,6 +1,5 @@
 <?php
 
-    //solo base de datos
     include 'db/DB.php';
 
     class UsuarioModel{
@@ -37,7 +36,6 @@
                 header("Location: index.php?controller=Hotel&action=mostrarHoteles");
                 return true;
             } else {
-                //header("Location: index.php?controller=Login&action=comprobarUser");
                 return false;
             }
         }

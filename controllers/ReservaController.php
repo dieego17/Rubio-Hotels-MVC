@@ -63,12 +63,13 @@
             $comprobarReserva = $this->model->comprobarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
             
             if($comprobarReserva){
-                echo "se puede hacer una reserva";
-                $insertarReserva = $this->model->insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
-
-                header('Location : index.php?controller=Habitacion&action=detallesHabitacion');
+                if($fecha_entrada > $fecha_salida){
+                    header('Location: index.php?controller=Reserva&action=usuarioReservas&error=2');
+                }else{
+                    $insertarReserva = $this->model->insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
+                }
             }else{
-                echo "no se puede reservar, ya existe una reserva";
+                header('Location: index.php?controller=Reserva&action=usuarioReservas&error');
             }
             
             

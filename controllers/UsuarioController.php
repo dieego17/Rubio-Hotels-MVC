@@ -1,8 +1,5 @@
 <?php
-    //solo php se comunica entre modelo y view
 
-    // Incluye el archivo TareasView.php
-    //include_once 'views/TareasView.php';
 
     class UsuarioController {
         // Obtiene una instancia del modelo y de la vista de tareas
