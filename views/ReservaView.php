@@ -41,6 +41,12 @@ class ReservaView{
                                         echo '<td class="td__hotel">'.$reserva->getId_habitacion().'</td>';
                                         echo '<td class="td__hotel">'.$reserva->getFecha_entrada().'</td>';
                                         echo '<td class="td__hotel">'.$reserva->getFecha_salida().'</td>';
+                                        echo '<td class=td__hotel>';
+                                                echo '<form action="index.php?controller=Reserva&action=reservaEspecifica" method="POST">';
+                                                    echo '<input type="hidden" name="id_reserva" value="'.$reserva->getId().'">';
+                                                    echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VER MÁS DETALLES</button>';
+                                                echo '</form>';
+                                            echo '</td>';
                                     echo '</tr>';
                                 }
                             ?>
@@ -125,7 +131,6 @@ class ReservaView{
         }
         
         public function mostrarDetallesReser($detallesReservas) {
-            if($_SESSION['rol'] == 0){
                 $reserva = $detallesReservas['reserva'];
                 $hotel = $detallesReservas['hotel'];
                 $habitacion = $detallesReservas['habitacion'];
@@ -136,10 +141,19 @@ class ReservaView{
                                 echo '<h2 class="h2__titulo">DETALLES DE LA RESERVA</h2>';
                                 echo '<div class="div__button div__button--reserva">';
                                     echo '<a class="link__sesion" href="index.php?controller=Usuario&action=cerrarSesion">CERRAR SESIÓN</a>';
-                                    echo '<form action="index.php?controller=Reserva&action=usuarioReservas" method="POST">';
-                                        echo '<input type="hidden" name="id" value="">';
-                                        echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VOLVER</button>';
-                                    echo '</form>';
+                                    if($_SESSION['rol'] == 0){
+                                        echo '<form action="index.php?controller=Reserva&action=usuarioReservas" method="POST">';
+                                            echo '<input type="hidden" name="id" value="">';
+                                            echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VOLVER</button>';
+                                        echo '</form>';
+                                    }
+                                    if($_SESSION['rol'] == 1){
+                                        echo '<form action="index.php?controller=Reserva&action=detallesReservas" method="POST">';
+                                            echo '<input type="hidden" name="id_hotel" value="'.$hotel->getId().'">';
+                                            echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VOLVER</button>';
+                                        echo '</form>';
+                                    }
+                                    
                                 echo '</div>';
                             echo '</section>';
                             
@@ -192,7 +206,6 @@ class ReservaView{
                         echo '</section>';
                     echo '</main>';
                 echo '</div>';
-            }
         }
     }
     

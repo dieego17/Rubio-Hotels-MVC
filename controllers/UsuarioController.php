@@ -49,6 +49,7 @@
             }
         }
         
+        
         //funcion para poder cerrar sesion
         public function cerrarSesion() {
             session_start();

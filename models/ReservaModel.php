@@ -11,7 +11,7 @@
                 $this->bd = new DB();
                 $this->pdo = $this->bd->getPDO();
             } catch (Exception $e) {
-                echo "Error initializing ReservaModel: " . $e->getMessage();
+                echo "Error para inicializar la ReservaModel: " . $e->getMessage();
             }
         }
 
@@ -23,7 +23,7 @@
                 $reservas->execute(array($id_hotel));
                 return $todasReservas = $reservas->fetchAll();
             } catch (Exception $e) {
-                echo "Error getting reservations: " . $e->getMessage();
+                echo "Error para conseguir las reservas: " . $e->getMessage();
             }
         }
 
@@ -35,7 +35,7 @@
                 $reservas->execute(array($_SESSION['id']));
                 return $todasReservas = $reservas->fetchAll();
             } catch (Exception $e) {
-                echo "Error getting user reservations: " . $e->getMessage();
+                echo "Error para conseguir la reserva de un usuario: " . $e->getMessage();
             }
         }
 
@@ -55,7 +55,7 @@
                 }
                 
             } catch (Exception $e) {
-                echo "Error checking reservation: " . $e->getMessage();
+                echo "Error para comprobar la reserva: " . $e->getMessage();
             }
         }
 
@@ -79,7 +79,7 @@
                 header('Location: index.php?controller=Reserva&action=usuarioReservas&success');
                 
             } catch (Exception $e) {
-                echo "Error inserting reservation: " . $e->getMessage();
+                echo "Error al insertar una reserva: " . $e->getMessage();
             }
         }
 
@@ -99,7 +99,7 @@
 
                 return array("reserva" => $reserva, "hotel" => $hotel, "habitacion" => $habitacion);
             } catch (Exception $e) {
-                echo "Error getting reservation details: " . $e->getMessage();
+                echo "Error para conseguir los detalles de la reserva: " . $e->getMessage();
             }
         }
     }

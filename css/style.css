@@ -176,7 +176,7 @@ body{
     border-radius: 5px;
 }
 .form__button--input:hover{
-    background-color: #40e8fec8;
+    background-color: #24c1cf;
 }
 .imagen__hotel{
     width: 300px;
@@ -239,4 +239,33 @@ body{
     font-family: LBo;
     color: #5D616A;
     padding: 0px 0px 10px;
+}
+
+/* PÁGINA ERROR */
+.main__error{
+    background: #ffffff;
+    border-radius: 5px;
+    margin: 95px 0px;
+    padding: 30px;
+    text-align: center;
+}
+.h1__error{
+    font-family: LBo;
+    color: #5D616A;
+}
+.h3__error{
+    font-family: LRe;
+    padding: 10px 0px;
+    color: #40E8FE;
+}
+.link__principal{
+    color: #ffffff;
+    background-color: #40E8FE;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: LRe;
+}
+.link__principal:hover{
+    background-color: #24c1cf;
 }
