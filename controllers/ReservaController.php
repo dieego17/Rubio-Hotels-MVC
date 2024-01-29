@@ -92,9 +92,9 @@
                 // Si las fechas son válidas, realiza la reserva
                 if ($fecha_entrada > $fecha_salida) {
                     header('Location: index.php?controller=Reserva&action=usuarioReservas&error=2');
-                } else {
-                    $insertarReserva = $this->model->insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
-                }
+                } 
+                $insertarReserva = $this->model->insertarReserva($id_habitacion, $id_hotel, $fecha_entrada, $fecha_salida);
+                
             } else {
                 // Si no está disponible, redirige con un mensaje de error
                 header('Location: index.php?controller=Reserva&action=usuarioReservas&error');

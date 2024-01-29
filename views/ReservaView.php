@@ -13,7 +13,7 @@
                 <!-- Contenedor principal de la vista -->
                 <div class="container__hoteles">
                     <main class="container__main">
-                        <section class="section__title">
+                        <div class="section__title">
                             <!-- Título de la sección de reservas -->
                             <h2 class="h2__titulo">RESERVAS REALIZADAS POR LOS CLIENTES</h2>
 
@@ -25,43 +25,45 @@
                                     <button class="form__button form__reserva--detalle form__button--input" type="submit">VOLVER</button>
                                 </form>
                             </div>
-                        </section>
+                        </div>
 
                         <!-- Sección para mostrar la tabla de reservas -->
-                        <section class="section__hotel section__habitacion row">
+                        <div class="section__hotel section__habitacion row">
                             <table class="table__hoteles table__habitaciones col-12">
                                 <?php
                                 echo '<thead class="thead__hoteles">';
-                                echo '<th class="th__hotel th__habitacion">ID DE RESERVA</th>';
-                                echo '<th class="th__hotel th__habitacion">USUARIO</th>';
-                                echo '<th class="th__hotel th__habitacion">HOTEL</th>';
-                                echo '<th class="th__hotel th__habitacion">HABITACIÓN</th>';
-                                echo '<th class="th__hotel th__habitacion">FECHA ENTRADA</th>';
-                                echo '<th class="th__hotel th__habitacion">FECHA SALIDA</th>';
-                                echo '<th class="th__hotel th__habitacion"></th>';
+                                    echo '<tr>';
+                                        echo '<th class="th__hotel th__habitacion">ID DE RESERVA</th>';
+                                        echo '<th class="th__hotel th__habitacion">USUARIO</th>';
+                                        echo '<th class="th__hotel th__habitacion">HOTEL</th>';
+                                        echo '<th class="th__hotel th__habitacion">HABITACIÓN</th>';
+                                        echo '<th class="th__hotel th__habitacion">FECHA ENTRADA</th>';
+                                        echo '<th class="th__hotel th__habitacion">FECHA SALIDA</th>';
+                                        echo '<th class="th__hotel th__habitacion"></th>';
+                                    echo '</tr>';
                                 echo '</thead>';
                                 echo '<tbody>';
 
                                 foreach ($nuevasReservas as $reserva) {
                                     echo '<tr>';
-                                    echo '<td class="td__hotel">' . $reserva->getId() . '</td>';
-                                    echo '<td class="td__hotel">' . $reserva->getId_usuario() . '</td>';
-                                    echo '<td class="td__hotel">' . $reserva->getId_hotel() . '</td>';
-                                    echo '<td class="td__hotel">' . $reserva->getId_habitacion() . '</td>';
-                                    echo '<td class="td__hotel">' . $reserva->getFecha_entrada() . '</td>';
-                                    echo '<td class="td__hotel">' . $reserva->getFecha_salida() . '</td>';
-                                    echo '<td class=td__hotel>';
-                                    echo '<form action="index.php?controller=Reserva&action=reservaEspecifica" method="POST">';
-                                    echo '<input type="hidden" name="id_reserva" value="' . $reserva->getId() . '">';
-                                    echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VER MÁS DETALLES</button>';
-                                    echo '</form>';
-                                    echo '</td>';
+                                        echo '<td class="td__hotel">' . $reserva->getId() . '</td>';
+                                        echo '<td class="td__hotel">' . $reserva->getId_usuario() . '</td>';
+                                        echo '<td class="td__hotel">' . $reserva->getId_hotel() . '</td>';
+                                        echo '<td class="td__hotel">' . $reserva->getId_habitacion() . '</td>';
+                                        echo '<td class="td__hotel">' . $reserva->getFecha_entrada() . '</td>';
+                                        echo '<td class="td__hotel">' . $reserva->getFecha_salida() . '</td>';
+                                        echo '<td class=td__hotel>';
+                                            echo '<form action="index.php?controller=Reserva&action=reservaEspecifica" method="POST">';
+                                                echo '<input type="hidden" name="id_reserva" value="' . $reserva->getId() . '">';
+                                                echo '<button class="form__button form__reserva--detalle form__button--input" type="submit">VER MÁS DETALLES</button>';
+                                            echo '</form>';
+                                        echo '</td>';
                                     echo '</tr>';
                                 }
                                 ?>
                                 </tbody>
                             </table>
-                        </section>
+                        </div>
                     </main>
                 </div>
                 <?php
@@ -79,7 +81,7 @@
                 <!-- Contenedor principal de la vista -->
                 <div class="container__hoteles">
                     <main class="container__main">
-                        <section class="section__title">
+                        <div class="section__title">
                             <!-- Título de la sección de reservas del usuario -->
                             <h2 class="h2__titulo">RESERVAS REALIZADAS POR <?php echo strtoupper($name) ?></h2>
 
@@ -91,7 +93,7 @@
                                     <button class="form__button form__reserva--detalle form__button--input" type="submit">VOLVER</button>
                                 </form>
                             </div>
-                        </section>
+                        </div>
 
                         <!-- Sección para mostrar mensajes de error o éxito -->
                         <?php
@@ -116,15 +118,17 @@
                         ?>
 
                         <!-- Sección para mostrar la tabla de reservas del usuario -->
-                        <section class="section__hotel section__habitacion row">
+                        <div class="section__hotel section__habitacion row">
                             <table class="table__hoteles table__habitaciones col-12">
                                 <?php
                                     echo '<thead class="thead__hoteles">';
-                                        echo '<th class="th__hotel th__habitacion">HOTEL</th>';
-                                        echo '<th class="th__hotel th__habitacion">HABITACIÓN</th>';
-                                        echo '<th class="th__hotel th__habitacion">FECHA ENTRADA</th>';
-                                        echo '<th class="th__hotel th__habitacion">FECHA SALIDA</th>';
-                                        echo '<th class="th__hotel th__habitacion"></th>';
+                                        echo '<tr>';
+                                            echo '<th class="th__hotel th__habitacion">HOTEL</th>';
+                                            echo '<th class="th__hotel th__habitacion">HABITACIÓN</th>';
+                                            echo '<th class="th__hotel th__habitacion">FECHA ENTRADA</th>';
+                                            echo '<th class="th__hotel th__habitacion">FECHA SALIDA</th>';
+                                            echo '<th class="th__hotel th__habitacion"></th>';
+                                        echo '</tr>';
                                     echo '</thead>';
                                     echo '<tbody>';
                                         foreach ($usuarioReservas as $reserva) {
@@ -144,7 +148,7 @@
                                 ?>
                                 </tbody>
                             </table>
-                        </section>
+                        </div>
                     </main>
                 </div>
 <?php
@@ -165,7 +169,7 @@
             echo '<div class="container__hoteles">';
                 echo '<main class="container__main">';
                     // Sección del título y botones de navegación
-                    echo '<section class="section__title">';
+                    echo '<div class="section__title">';
                         echo '<h2 class="h2__titulo">DETALLES DE LA RESERVA</h2>';
                         echo '<div class="div__button div__button--reserva">';
                             // Botón de cierre de sesión para todos los usuarios
@@ -184,54 +188,58 @@
                                 echo '</form>';
                             }
                         echo '</div>';
-                    echo '</section>';
+                    echo '</div>';
 
                     // Sección que muestra el nombre del hotel y su foto
-                    echo '<section class="nombre__foto--hotel">';
+                    echo '<div class="nombre__foto--hotel">';
                         echo '<h3 class="title__hotel">' . $hotel->getNombre() . '</h3>';
-                        echo '<img class="imagen__hotel" src = "data:image/jpeg;base64,' . base64_encode($hotel->getFoto()) . '">';
-                    echo '</section>';
+                        echo '<img class="imagen__hotel" alt="" src = "data:image/jpeg;base64,' . base64_encode($hotel->getFoto()) . '">';
+                    echo '</div>';
 
                     // Sección que muestra información del hotel
-                    echo '<section class="section__hotel section__habitacion row">';
+                    echo '<div class="section__hotel section__habitacion row">';
                         echo '<table class="table__hoteles table__habitaciones col-12">';
                             echo '<thead class="thead__hoteles">';
-                                echo '<th class="th__hotel th__habitacion">DIRECCIÓN</th>';
-                                echo '<th class="th__hotel th__habitacion">CIUDAD</th>';
-                                echo '<th class="th__hotel th__habitacion">PAÍS</th>';
-                                echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIONES</th>';
-                                echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
+                                echo '<tr>';
+                                    echo '<th class="th__hotel th__habitacion">DIRECCIÓN</th>';
+                                    echo '<th class="th__hotel th__habitacion">CIUDAD</th>';
+                                    echo '<th class="th__hotel th__habitacion">PAÍS</th>';
+                                    echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIONES</th>';
+                                    echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
+                                echo '</tr>';
                             echo '</thead>';
                             echo '<tbody>';
                                 echo '<tr>';
-                                echo '<td class="td__hotel">' . $hotel->getDireccion() . '</td>';
-                                echo '<td class="td__hotel">' . $hotel->getCiudad() . '</td>';
-                                echo '<td class="td__hotel">' . $hotel->getPais() . '</td>';
-                                echo '<td class=td__hotel>' . $hotel->getNum_habitaciones() . '</td>';
-                                echo '<td class=td__hotel>' . $hotel->getDescripcion() . '</td>';
+                                    echo '<td class="td__hotel">' . $hotel->getDireccion() . '</td>';
+                                    echo '<td class="td__hotel">' . $hotel->getCiudad() . '</td>';
+                                    echo '<td class="td__hotel">' . $hotel->getPais() . '</td>';
+                                    echo '<td class=td__hotel>' . $hotel->getNum_habitaciones() . '</td>';
+                                    echo '<td class=td__hotel>' . $hotel->getDescripcion() . '</td>';
                             echo '</tr>';
                             echo '</tbody>';
                         echo '</table>';
-                    echo '</section>';
+                    echo '</div>';
                     // Sección que muestra información de la habitación
-                    echo '<section class="section__hotel section__habitacion row">';
+                    echo '<div class="section__hotel section__habitacion row">';
                         echo '<table class="table__hoteles table__habitaciones col-12">';
-                        echo '<thead class="thead__hoteles">';
-                            echo '<th class="th__hotel th__habitacion">NÚMERO HABITACIÓN</th>';
-                            echo '<th class="th__hotel th__habitacion">TIPO</th>';
-                            echo '<th class="th__hotel th__habitacion">PRECIO</th>';
-                            echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
-                        echo '</thead>';
-                        echo '<tbody>';
-                            echo '<tr>';
-                                echo '<td class="td__hotel">' . $habitacion->getNum_habitacion() . '</td>';
-                                echo '<td class="td__hotel">' . $habitacion->getTipo() . '</td>';
-                                echo '<td class="td__hotel">' . $habitacion->getPrecio() . '€</td>';
-                                echo '<td class=td__hotel>' . $habitacion->getDescripcion() . '</td>';
-                            echo '</tr>';
-                        echo '</tbody>';
+                            echo '<thead class="thead__hoteles">';
+                                echo '<tr>';
+                                    echo '<th class="th__hotel th__habitacion">NÚMERO HABITACIÓN</th>';
+                                    echo '<th class="th__hotel th__habitacion">TIPO</th>';
+                                    echo '<th class="th__hotel th__habitacion">PRECIO</th>';
+                                    echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
+                                echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+                                echo '<tr>';
+                                    echo '<td class="td__hotel">' . $habitacion->getNum_habitacion() . '</td>';
+                                    echo '<td class="td__hotel">' . $habitacion->getTipo() . '</td>';
+                                    echo '<td class="td__hotel">' . $habitacion->getPrecio() . '€</td>';
+                                    echo '<td class=td__hotel>' . $habitacion->getDescripcion() . '</td>';
+                                echo '</tr>';
+                            echo '</tbody>';
                         echo '</table>';
-                    echo '</section>';
+                    echo '</div>';
                 echo '</main>';
             echo '</div>';
         }

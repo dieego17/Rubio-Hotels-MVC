@@ -12,7 +12,7 @@
             <!-- Contenedor principal de la vista -->
             <div class="container__hoteles">
                 <main class="container__main">
-                    <section class="section__title">
+                    <div class="section__title">
                         <!-- Título de las habitaciones disponibles -->
                         <h2 class="h2__titulo">HABITACIONES DISPONIBLES</h2>
 
@@ -41,10 +41,10 @@
                             <!-- Enlace para volver a la lista de hoteles -->
                             <a class="link__sesion" href="index.php?controller=Hotel&action=mostrarHoteles">VOLVER</a>
                         </div>
-                    </section>
+                    </div>
 
                     <!-- Sección de visualización de habitaciones -->
-                    <section class="section__hotel section__habitacion row">
+                    <div class="section__hotel section__habitacion row">
                         <!-- Tabla que muestra las habitaciones -->
                         <table class="table__hoteles table__habitaciones col-12">
                             <?php 
@@ -53,16 +53,17 @@
 
                                 // Cabecera de la tabla
                                 echo '<thead class="thead__hoteles">';
-                                    echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIÓN</th>';
-                                    echo '<th class="th__hotel th__habitacion">TIPO</th>';
-                                    echo '<th class="th__hotel th__habitacion">PRECIO</th>';
-                                    echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
+                                    echo '<tr>';
+                                        echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIÓN</th>';
+                                        echo '<th class="th__hotel th__habitacion">TIPO</th>';
+                                        echo '<th class="th__hotel th__habitacion">PRECIO</th>';
+                                        echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
 
-                                    // Columnas adicionales visibles para el usuario (rol 0 - cliente)
-                                    if($_SESSION['rol'] == 0){
-                                        echo '<th class="th__hotel th__habitacion">RESERVAR HABITACIÓN</th>';
-                                        echo '<th class="th__hotel th__habitacion"></th>';
-                                    }
+                                        // Columnas adicionales visibles para el usuario (rol 0 - cliente)
+                                        if($_SESSION['rol'] == 0){
+                                            echo '<th class="th__hotel th__habitacion">RESERVAR HABITACIÓN</th>';
+                                        }
+                                    echo '</tr>';
                                 echo '</thead>';
 
                                 // Bucle para mostrar cada habitación
@@ -79,17 +80,17 @@
                                                 echo '<td class="td__hotel">';
                                                     echo '<form class="form__reserva" action="index.php?controller=Reserva&action=comprobarReserva" method="POST">';
                                                         echo '<div class="div__input">';
-                                                            echo '<label class="label__form" for="">Fecha de Entrada:</label>';
+                                                            echo '<label class="label__form">Fecha de Entrada:</label>';
                                                             echo '<input type="hidden" name="id_hotel" value="'.$habitacion->getId_hotel().'">';
                                                             echo '<input type="hidden" name="id_habitacion" value="'.$habitacion->getId().'">';
-                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_entrada" id="" required>';
+                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_entrada" required>';
                                                         echo '</div>';
 
                                                         echo '<div class="div__input">';
-                                                            echo '<label class="label__form" for="">Fecha de Salida:</label>';
+                                                            echo '<label class="label__form">Fecha de Salida:</label>';
                                                             echo '<input type="hidden" name="id_hotel" value="'.$habitacion->getId_hotel().'">';
                                                             echo '<input type="hidden" name="id_habitacion" value="'.$habitacion->getId().'">';
-                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_salida" id="" required>';
+                                                            echo '<input class="input__date" min="'.$fechaActual.'" type="date" name="fecha_salida" required>';
                                                         echo '</div>';
 
                                                         echo '<button class="form__button form__reserva--detalle form__button--input button__reserva" type="submit">RESERVAR</button>';
@@ -101,7 +102,7 @@
                                 }
                             ?>
                         </table>
-                    </section>
+                    </div>
                 </main>
             </div>
 <?php
