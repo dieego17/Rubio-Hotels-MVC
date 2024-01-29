@@ -14,7 +14,7 @@
                 <main class="container__main">
                     <div class="section__title">
                         <!-- Título de las habitaciones disponibles -->
-                        <h2 class="h2__titulo">HABITACIONES DISPONIBLES</h2>
+                        <h2 class="h2__titulo">HABITACIONES DISPONIBLES EN HOTEL <?php echo $nuevasHabitaciones[0]->getId_hotel() ?></h2>
 
                         <!-- Sección de botones y enlaces -->
                         <div class="div__button div__button--reserva">

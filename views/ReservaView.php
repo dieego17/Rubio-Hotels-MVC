@@ -205,7 +205,6 @@
                                     echo '<th class="th__hotel th__habitacion">CIUDAD</th>';
                                     echo '<th class="th__hotel th__habitacion">PAÍS</th>';
                                     echo '<th class="th__hotel th__habitacion">NÚMERO DE HABITACIONES</th>';
-                                    echo '<th class="th__hotel th__habitacion">DESCRIPCIÓN</th>';
                                 echo '</tr>';
                             echo '</thead>';
                             echo '<tbody>';
@@ -213,8 +212,7 @@
                                     echo '<td class="td__hotel">' . $hotel->getDireccion() . '</td>';
                                     echo '<td class="td__hotel">' . $hotel->getCiudad() . '</td>';
                                     echo '<td class="td__hotel">' . $hotel->getPais() . '</td>';
-                                    echo '<td class=td__hotel>' . $hotel->getNum_habitaciones() . '</td>';
-                                    echo '<td class=td__hotel>' . $hotel->getDescripcion() . '</td>';
+                                    echo '<td class="td__hotel">' . $hotel->getNum_habitaciones() . '</td>';
                             echo '</tr>';
                             echo '</tbody>';
                         echo '</table>';
