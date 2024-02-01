@@ -28,7 +28,7 @@
          * Recupera los datos del formulario, realiza la comprobación y gestiona el inicio de sesión.
          */
         public function comprobarUser() {
-            session_start();
+            //session_start();
             if(!$_SESSION['nombre']){
                 header('Location: ./index.php');
             }

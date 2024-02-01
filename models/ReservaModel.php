@@ -24,9 +24,9 @@
         /**
          * Obtiene todas las reservas sin filtrar por hotel.
          * @param int $id_hotel - Identificador del hotel (no se utiliza en la consulta actual).
-         * @return array - Arreglo asociativo con todas las reservas.
+         * @return array - Array asociativo con todas las reservas.
          */
-        public function getReservas($id_hotel){
+        public function getReservas(){
             try {
                 $sql = "SELECT * FROM reservas;";
                 $reservas = $this->pdo->prepare($sql);
@@ -39,7 +39,7 @@
 
         /**
          * Obtiene las reservas realizadas por un usuario específico.
-         * @return array - Arreglo asociativo con todas las reservas del usuario actual.
+         * @return array - Array asociativo con todas las reservas del usuario actual.
          */
         public function reservaUser(){
             try {
@@ -109,7 +109,7 @@
         /**
          * Obtiene los detalles de una reserva específica, incluyendo información del hotel y la habitación asociados.
          * @param int $id_reserva - Identificador de la reserva.
-         * @return array - Arreglo asociativo con objetos Reserva, Hotel y Habitacion.
+         * @return array - Array asociativo con objetos Reserva, Hotel y Habitacion.
          */
         public function detallesReservas($id_reserva){
             try {
@@ -128,6 +128,20 @@
             } catch (Exception $e) {
                 echo "Error para conseguir los detalles de la reserva: " . $e->getMessage();
             }
+        }
+
+        public function deleteReserva($id_reserva){
+
+            try {
+                $sql =  'DELETE FROM reservas WHERE id = :id_reserva;';
+                $delete = $this->pdo->prepare($sql);
+                $delete->execute(array('id_reserva' => $id_reserva));
+                return $delete->rowCount();
+                
+            } catch (Exception $e) {
+                echo "Error para eliminar la reserva: " . $e->getMessage();
+            }
+            
         }
     }
 ?>

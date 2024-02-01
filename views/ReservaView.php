@@ -26,13 +26,21 @@
                                 </form>
                             </div>
                         </div>
-
+                        <?php
+                            if(isset($_GET['eliminada'])){
+                                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                                    echo 'Reserva eliminada correctamente.';
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                echo '</div>';
+                            }
+                        ?>
                         <!-- Sección para mostrar la tabla de reservas -->
                         <div class="section__hotel section__habitacion row">
                             <table class="table__hoteles table__habitaciones col-12">
                                 <?php
                                 echo '<thead class="thead__hoteles">';
                                     echo '<tr>';
+                                        echo '<th class="th__hotel th__habitacion">ELIMINAR</th>';
                                         echo '<th class="th__hotel th__habitacion">ID DE RESERVA</th>';
                                         echo '<th class="th__hotel th__habitacion">USUARIO</th>';
                                         echo '<th class="th__hotel th__habitacion">HOTEL</th>';
@@ -43,9 +51,43 @@
                                     echo '</tr>';
                                 echo '</thead>';
                                 echo '<tbody>';
-
+                                $id=0;
                                 foreach ($nuevasReservas as $reserva) {
+                                    $id++; // Incremento el id para que al pulsar en uno de los modales detecte el correcto
+                                    $modalEliminarID = 'exampleModalEliminar_' . $id;
+                                    
+                                    $exampleModalLabelEliID = 'exampleModalLabelEliminar_' . $id;
+
                                     echo '<tr>';
+                                        echo '<td class=td__hotel>';
+                                            echo '<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#'.$modalEliminarID.'">';
+                                                echo 'X';
+                                            echo '</button>';
+                                        
+                                            echo '<div class="modal fade" id="'.$modalEliminarID.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+                                                echo '<div class="modal-dialog">';
+                                                    echo '<div class="modal-content">';
+                                                        echo '<div class="modal-header">';
+                                                            echo '<h1 class="modal-title fs-5" id="'.$exampleModalLabelEliID.'">RESERVA '.$reserva->getId().'</h1>';
+                                                            echo '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                                                        echo '</div>';
+                                                        echo '<div class="modal-body">';
+                                                            echo '<p>¿Estás seguro que quieres borrar la reserva ' .$reserva->getId() .'?</p>';
+                                                        echo '</div>';
+                                                        echo '<div class="modal-footer">';
+                                                            echo '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>';
+
+                                                            echo '<form action="index.php?controller=Reserva&action=eliminarReserva" method="POST">';
+                                                                echo '<input type="hidden" name="id_reserva" value="' . $reserva->getId() . '">';
+                                                                echo '<button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#'.$modalEliminarID.'">';
+                                                                    echo 'Eliminar';
+                                                                echo '</button>';
+                                                            echo '</form>';
+                                                        echo '</div>';
+                                                    echo '</div>';
+                                                echo '</div>';
+                                            echo '</div>';
+                                        echo '</td>';
                                         echo '<td class="td__hotel">' . $reserva->getId() . '</td>';
                                         echo '<td class="td__hotel">' . $reserva->getId_usuario() . '</td>';
                                         echo '<td class="td__hotel">' . $reserva->getId_hotel() . '</td>';
@@ -97,21 +139,29 @@
 
                         <!-- Sección para mostrar mensajes de error o éxito -->
                         <?php
-                            if (isset($_GET['error'])) {
+                            if (isset($_GET['error']) == 1) {
                                 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
                                     echo 'Reserva no disponible. Seleccione otra fecha.';
                                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                                 echo '</div>';
-                            }
-                            if (isset($_GET['error']) == 2) {
+                            }else if (isset($_GET['error']) == 2) {
                                 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
                                     echo 'La fecha de salida no puede ser más pequeña que la de entrada.';
                                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                                 echo '</div>';
                             }
+                            
+                            
                             if (isset($_GET['success'])) {
                                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
                                     echo 'Reserva realizada con éxito.';
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                echo '</div>';
+                            }
+                            
+                            if(isset($_GET['eliminada'])){
+                                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                                    echo 'Reserva eliminada correctamente.';
                                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                                 echo '</div>';
                             }
@@ -123,6 +173,7 @@
                                 <?php
                                     echo '<thead class="thead__hoteles">';
                                         echo '<tr>';
+                                            echo '<th class="th__hotel th__habitacion">CANCELAR RESERVA</th>';
                                             echo '<th class="th__hotel th__habitacion">HOTEL</th>';
                                             echo '<th class="th__hotel th__habitacion">HABITACIÓN</th>';
                                             echo '<th class="th__hotel th__habitacion">FECHA ENTRADA</th>';
@@ -131,8 +182,43 @@
                                         echo '</tr>';
                                     echo '</thead>';
                                     echo '<tbody>';
-                                        foreach ($usuarioReservas as $reserva) {
-                                            echo '<tr>';
+                                    $id = 0;
+                                    foreach ($usuarioReservas as $reserva) {
+                                        $id++; // Incremento el id para que al pulsar en uno de los modales detecte el correcto
+                                        $modalEliminarID = 'exampleModalEliminar_' . $id;
+
+                                        $exampleModalLabelEliID = 'exampleModalLabelEliminar_' . $id;
+
+                                        echo '<tr>';
+                                            echo '<td class=td__hotel>';
+                                                echo '<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#'.$modalEliminarID.'">';
+                                                    echo 'X';
+                                                echo '</button>';
+
+                                                echo '<div class="modal fade" id="'.$modalEliminarID.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+                                                    echo '<div class="modal-dialog">';
+                                                        echo '<div class="modal-content">';
+                                                            echo '<div class="modal-header">';
+                                                                echo '<h1 class="modal-title fs-5" id="'.$exampleModalLabelEliID.'">RESERVA '.$reserva->getId().'</h1>';
+                                                                echo '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                                                            echo '</div>';
+                                                            echo '<div class="modal-body">';
+                                                                echo '<p>¿Estás seguro que quieres borrar la reserva ' .$reserva->getId() .'?</p>';
+                                                            echo '</div>';
+                                                            echo '<div class="modal-footer">';
+                                                                echo '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>';
+
+                                                                echo '<form action="index.php?controller=Reserva&action=eliminarReserva" method="POST">';
+                                                                    echo '<input type="hidden" name="id_reserva" value="' . $reserva->getId() . '">';
+                                                                    echo '<button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#'.$modalEliminarID.'">';
+                                                                        echo 'Eliminar';
+                                                                    echo '</button>';
+                                                                echo '</form>';
+                                                            echo '</div>';
+                                                        echo '</div>';
+                                                    echo '</div>';
+                                                echo '</div>';
+                                            echo '</td>';
                                                 echo '<td class="td__hotel">' . $reserva->getId_hotel() . '</td>';
                                                 echo '<td class="td__hotel">' . $reserva->getId_habitacion() . '</td>';
                                                 echo '<td class="td__hotel">' . $reserva->getFecha_entrada() . '</td>';

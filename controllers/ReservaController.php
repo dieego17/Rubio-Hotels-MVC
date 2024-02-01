@@ -23,11 +23,8 @@
                 header('Location: ./index.php');
             }
 
-            // Recupera el ID del hotel desde el formulario
-            $id_hotel = $_POST['id_hotel'];
-
             // Obtiene las reservas del hotel
-            $reservas = $this->model->getReservas($id_hotel);
+            $reservas = $this->model->getReservas();
 
             $nuevasReservas = array();
 
@@ -97,7 +94,7 @@
                 
             } else {
                 // Si no está disponible, redirige con un mensaje de error
-                header('Location: index.php?controller=Reserva&action=usuarioReservas&error');
+                header('Location: index.php?controller=Reserva&action=usuarioReservas&error=1');
             }
         }
 
@@ -119,6 +116,28 @@
 
             // Muestra los detalles de la reserva utilizando la vista correspondiente
             $this->view->mostrarDetallesReser($detallesReservas);
+        }
+
+        public function eliminarReserva(){
+            session_start();
+            if(!$_SESSION['nombre']){
+                header('Location: ./index.php');
+            }
+
+            // Recupera el ID de la reserva desde el formulario
+            $id_reserva = $_POST['id_reserva'];
+
+            $reservaEliminada = $this->model->deleteReserva($id_reserva);
+
+            if($reservaEliminada > 0){
+                if($_SESSION['rol'] == 1){
+                    header('Location: index.php?controller=Reserva&action=detallesReservas&eliminada');
+                }else if($_SESSION['rol'] == 0){
+                    header('Location: index.php?controller=Reserva&action=usuarioReservas&eliminada');
+                }
+            }else{
+                echo "no ha borrado nada";
+            }
         }
     }
 ?>
